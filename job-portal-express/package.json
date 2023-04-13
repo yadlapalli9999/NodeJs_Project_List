@@ -1,0 +1,22 @@
+{
+  "name": "job-portal-express",
+  "version": "1.0.0",
+  "description": "Job Portal Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongoose",
+    "nodemon",
+    "cor",
+    "morgan"
+  ],
+  "author": "ramarao",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

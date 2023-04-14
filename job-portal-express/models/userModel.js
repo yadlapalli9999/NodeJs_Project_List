@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
-const UserSchema = new mongoose.Schema({
+let UserSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true,'Name is Required']
@@ -13,7 +13,9 @@ const UserSchema = new mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true,'Passpord is Required']
+        required:[true,'Passpord is Required'],
+        minlength:[6,'Password should be greater than 6 character'],
+        select:true
     },
     location:{
         type:String,

@@ -1,7 +1,10 @@
 import express  from "express";
 import  dotEnv  from "dotenv";
 import colors from 'colors';
+import connectDB from "./config/db.js";
 dotEnv.config()
+
+connectDB()
 const port = process.env.PORT || 8080;
 const app = express();
 

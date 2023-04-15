@@ -33,3 +33,41 @@ export const registerController = async(req,res)=>{
     })
    }
 }
+
+export const loginController = async(req,res) =>{
+  try{
+     let {email,password} = req.body;
+     const user = await userModel.findOne({email})
+     if(!user){
+        return res.status(400).send({success:false,message:'user is not registered'})
+     }
+     let isMatchPassword = await bcrypt.compare(password,user.password);
+     if(!isMatchPassword){
+        return res.status(400).send({success:false,message:'email and password is not match'})
+     }
+
+     const token = jwt.sign({userId:user._id},process.env.JWT_SECRET,{
+        expiresIn:'1d'
+       })
+       res.status(201).send({
+           success:true,
+           message:"User login Successfully",
+           user,
+           token
+       })
+  }
+  catch(error){
+    console.log(error)
+    res.status(400).send({
+        success:false,
+        message:"Error in Login Controller",
+        error
+    })
+   }
+  
+}
+
+export const testController = (req,res)=>{
+    let {name} = req.body;
+    res.status(200).send(`your name ${name}`)
+}
